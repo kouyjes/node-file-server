@@ -1,0 +1,15 @@
+<div class="mg-dropdown" ref="trigger" @click="toggleCollapse()">
+    <slot  :collapse="collapse"></slot>
+    <template v-if="fixedLayout">
+        <div :collapse="collapse" ref="dropdown" :style="{left:menuStyle.left+'px',top:menuStyle.top + 'px'}"
+             :class="{'layout-finished':!layoutPending}" class="fixed-layout dropdown-pop" v-show="!collapse">
+            <slot name="dropdown"></slot>
+        </div>
+    </template>
+    <template v-else>
+        <div :collapse="collapse" ref="dropdown"
+              class="abs-layout dropdown-pop" v-show="!collapse">
+            <slot name="dropdown"></slot>
+        </div>
+    </template>
+</div>

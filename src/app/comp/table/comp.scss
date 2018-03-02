@@ -1,0 +1,34 @@
+@import "../../../util/css/util";
+@import "../../../util/css/color";
+.mg-table{
+  @include css(box-sizing,border-box);
+  position: relative;
+  overflow:hidden;
+  div,header{
+    @include css(box-sizing,border-box);
+  }
+  .cell{
+    float:left;
+    padding-left:8px;
+    min-height: 1px;
+  }
+  .table-row{
+    min-height:30px;
+  }
+  .table-header{
+    position: relative;
+    width: 100%;
+    padding: 12px 0;
+    background-color: #fafafa;
+    .header-content{
+      position: relative;
+    }
+  }
+  .table-body{
+    width:100%;
+    overflow:auto;
+    .body-content{
+
+    }
+  }
+}

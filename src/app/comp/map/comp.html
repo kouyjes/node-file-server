@@ -1,0 +1,13 @@
+<div class="mg-map" ref="el">
+    <div class="map-tool-options" @click.stop="" v-if="options.toolbar">
+        <div class="map-option-btn" :class="{'selected':state.toolbar.current==='circle'}">
+            <div class="tool-icon circle-icon" @click.stop="enableShapeSelection('circle')"></div>
+        </div>
+        <div class="map-option-btn" :class="{'selected':state.toolbar.current==='rect'}">
+            <div class="tool-icon rect-icon" @click.stop="enableShapeSelection('rect')"></div>
+        </div>
+        <div class="map-option-btn" :class="{'selected':state.toolbar.current==='polygon'}">
+            <div class="tool-icon polygon-icon" @click.stop="enableShapeSelection('polygon')"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+.mg-table {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  position: relative;
+  overflow: hidden; }
+  .mg-table div, .mg-table header {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box; }
+  .mg-table .cell {
+    float: left;
+    padding-left: 8px;
+    min-height: 1px; }
+  .mg-table .table-row {
+    min-height: 30px; }
+  .mg-table .table-header {
+    position: relative;
+    width: 100%;
+    padding: 12px 0;
+    background-color: #fafafa; }
+    .mg-table .table-header .header-content {
+      position: relative; }
+  .mg-table .table-body {
+    width: 100%;
+    overflow: auto; }
+
+/*# sourceMappingURL=comp.css.map */

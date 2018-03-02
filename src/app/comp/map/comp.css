@@ -1,0 +1,73 @@
+.mg-map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+  .mg-map .leaflet-control-attribution {
+    display: none; }
+  .mg-map.drawing {
+    cursor: crosshair; }
+  .mg-map .map-tool-options {
+    position: absolute;
+    z-index: 200000;
+    top: 20px;
+    right: 20px;
+    white-space: nowrap;
+    background-color: #fff;
+    border: 1px solid #b6b6ce;
+    padding: 4px 10px;
+    cursor: auto; }
+    .mg-map .map-tool-options .map-option-btn {
+      float: left;
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+      cursor: pointer;
+      border: 1px solid #83c193;
+      padding: 2px; }
+      .mg-map .map-tool-options .map-option-btn:active {
+        background-color: #b6ecba; }
+      .mg-map .map-tool-options .map-option-btn.selected {
+        background-color: rgba(175, 145, 64, 0.38);
+        border-color: #fc5d3f; }
+      .mg-map .map-tool-options .map-option-btn:last-child {
+        margin-right: 0; }
+    .mg-map .map-tool-options .tool-icon {
+      width: 100%;
+      height: 100%;
+      background-size: 100% 100%; }
+    .mg-map .map-tool-options .rect-icon {
+      background-image: url("icons/rect.svg"); }
+    .mg-map .map-tool-options .polygon-icon {
+      background-image: url("icons/polygon.svg"); }
+    .mg-map .map-tool-options .circle-icon {
+      background-image: url("icons/circle.svg"); }
+  .mg-map svg .point {
+    fill: #fff;
+    stroke: blue; }
+    .mg-map svg .point.start-point {
+      fill: red; }
+  .mg-map svg .current-line {
+    stroke: rgba(0, 0, 255, 0.46);
+    stroke-width: 4px;
+    stroke-dasharray: 10px; }
+  .mg-map svg .circle-radius-line {
+    stroke: rgba(0, 0, 255, 0.46);
+    stroke-width: 4px;
+    stroke-dasharray: 10px; }
+  .mg-map svg .selection-area {
+    fill: rgba(255, 0, 0, 0.26);
+    stroke: #74af80;
+    stroke-width: 4px; }
+  .mg-map svg g.finished .current-line, .mg-map svg g.finished .current-point, .mg-map svg g.finished .circle-radius-line, .mg-map svg g.finished .circle-help {
+    display: none; }
+  .mg-map svg g.finished .rect-help-circle {
+    display: block; }
+  .mg-map svg .polygon-area {
+    fill: none;
+    stroke: #74af80;
+    stroke-width: 4px; }
+    .mg-map svg .polygon-area.finished {
+      fill: rgba(255, 0, 0, 0.26); }
+
+/*# sourceMappingURL=comp.css.map */

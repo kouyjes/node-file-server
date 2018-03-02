@@ -1,0 +1,39 @@
+
+<div class="mg-select-comp" ref="selectComp" :class="{'mg-select-expand':!collapse,'mg-select-filter':filter,'mg-select-multi':multi}" @mousedown="click()">
+
+    <!-- 单选 -->
+    <div v-if="!multi" class="mg-select" @click="toggleCollapse()" :class="{'mg-expand':!collapse}">
+        <div class="mg-select-content"><span v-if="select && select.length" :title="select[0] && select[0].name">{{select[0] && select[0].name}}</span></div>
+        <i class="mg-select-ctrl" :class="{'mg-expand':!collapse}"></i>
+    </div>
+    <!-- 多选 -->
+    <div v-if="multi" class="mg-select" @click="toggleCollapse()" :class="{'mg-expand':!collapse}">
+        <div class="mg-select-content" v-if="select && select.length">
+            <span v-for="sel in select" :title="sel.name">
+                {{sel.name}}
+                <i class="fa fa-times" @click.stop="toggleSelect(sel)"></i>
+            </span>
+        </div>
+    </div>
+
+    <div class="mg-select-option" v-if="(filter || items && items.length>0)">
+        <div class="mg-select-search">
+            <div>
+                <div class="input-wrapper">
+                    <input v-input-focus type="text" v-model="keyword"/>
+                </div>
+                <i v-if="keyword" @click="removeKeyword()" class="remove-keyword"></i>
+                <i v-else class="fa fa-search"></i>
+            </div>
+        </div>
+        <mg-select-list class="mg-select-list"
+                        :style="{maxHeight:maxHeight}"
+                        v-if="items && items.length>0"
+                        :identify="identify"
+                        :keyword="keyword"
+                        :select="select"
+                        :items="items"
+                        @change="toggleSelect($event)">
+        </mg-select-list>
+    </div>
+</div>

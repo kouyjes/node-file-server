@@ -1,0 +1,136 @@
+@import "../../../util/css/util";
+@import "../../../util/css/color";
+.nodes-graph-panel{
+  position: relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  @include keyframes(node-img-enter){
+    from{
+      width: 200%;
+      height: 200%;
+      margin-top: -25%;
+      margin-left: -25%;
+      background-color: $basicColor;
+    }
+    to{
+      width: 100%;
+      height: 100%;
+      margin-top: 0;
+      margin-left: 0;
+      background-color: transparent;
+    }
+  }
+  svg{
+    .hidden{
+      display: none !important;
+    }
+    .line-arrow{
+      stroke: $basicColor;
+      fill: $basicColor;
+    }
+    div,img{
+      @include css(box-sizing,border-box);
+    }
+    .node{
+      foreignObject{
+        overflow: visible;
+        $textHeight:20px;
+        @include css(transform,translate3d(0,0,0));
+        .node-content{
+          width:100%;
+          height:100%;
+          overflow: hidden;
+          border:1px solid $primaryColor;
+          cursor:pointer;
+          background-color: #c1fb89;
+          &[node-shape="circle"]{
+            border-radius: 50%;
+            img{
+              border-radius:50%;
+            }
+          }
+          &[node-shape="rect"]{
+            border-radius: .25em;
+            img{
+              border-radius:.25em;
+            }
+          }
+        }
+        .node-text{
+          margin-left:-20%;
+          margin-top:4px;
+          height:$textHeight;
+          line-height:$textHeight;
+          white-space: nowrap;
+          border-radius: $textHeight / 2;
+          text-align: center;
+          &:empty{
+            display:none;
+          }
+        }
+        span{
+          background: $primaryColor;
+          border-radius: $textHeight / 2;
+          padding: 0 12px;
+          color:#fff;
+        }
+      }
+      img{
+        width:100%;
+        height:100%;
+        background-color: #c1fb89;
+        overflow:hidden;
+        @include css(animation,node-img-enter .4s);
+      }
+      &.selected{
+        div{
+          &:nth-child(1){
+            border-color:$basicColor !important;
+          }
+          &:nth-child(2){
+            span{
+              background-color: $basicColor;
+            }
+
+          }
+        }
+      }
+    }
+    .line{
+      path{
+        stroke:$basicColor;
+        stroke-width:1px;
+        fill:none;
+        cursor: pointer;
+        &:hover{
+          stroke:$assistColor;
+        }
+      }
+      foreignObject{
+        overflow: visible;
+        >div{
+          width:100%;
+          height:100%;
+          @extend %text-ellipsis;
+          text-align: center;
+          margin-left:-60px;
+          color:$primaryColor;
+          >span{
+            font-size:.7em;
+            cursor: pointer;
+            padding:0 4px;
+            border-radius:4px;
+            white-space: nowrap;
+          }
+
+        }
+      }
+      &.selected{
+        path{
+          stroke:$assistColor;
+        }
+      }
+    }
+  }
+}

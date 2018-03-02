@@ -1,0 +1,275 @@
+@import "../../../util/css/util";
+@include keyframes(mg-select-option){
+  from{
+    @include css(transform,scaleY(0));
+  }
+  to{
+    @include css(transform,scaleY(1));
+  }
+}
+$inputHeight:30px;
+$itemHeight:26px;
+$fontSize:12px;
+$border:1px solid #ccc;
+$iconColor:#8a9494;
+
+
+.mg-select-comp{
+  position: relative;
+  width:100%;
+  background-color:#fff;
+
+  &,*{
+    &::-webkit-scrollbar-track
+    {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar
+    {
+      $size:8px;
+      width: $size;
+      height: $size;
+      padding-left: 2px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb
+    {
+      background-clip: padding-box;
+      border: 1px solid rgba(255, 255, 255, 0);
+      -webkit-box-shadow: inset 0 0 6px rgba(102,102,102,.3);
+      background-color: rgba(173, 164, 164, 0.93);
+      border-radius: 10px;
+    }
+  }
+  &,div,ul,li{
+    @include css(box-sizing,border-box);
+  }
+  height:$inputHeight;
+  font-size:$fontSize;
+  .mg-text{
+    .mg-text-highlight{
+      color:#000;
+      background-color:yellow;
+      font-style:normal;
+    }
+  }
+  .mg-select-ctrl{
+    $iconSize:8px;
+    position: absolute;
+    display:block;
+    right:0;
+    top:0;
+    text-align: center;
+    line-height:$itemHeight;
+    width:$itemHeight;
+    height:$itemHeight;
+    cursor:pointer;
+    &:before{
+      content:' ';
+      display:inline-block;
+      width:$iconSize;
+      height:$iconSize;
+      border-left:2px solid $iconColor;
+      border-bottom:2px solid $iconColor;
+      @include css(transform,rotate(-45deg));
+      @include css(transform-origin,center center);
+      @include css(transition,transform .6s);
+    }
+    &.mg-expand{
+      &:before{
+        @include css(transform,rotate(135deg));
+      }
+    }
+
+    &.mg-list-expand{
+      &.mg-expand{
+      }
+    }
+  }
+  .mg-select-option{
+    position: absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    overflow: hidden;
+    border:$border;
+    border-top: none;
+    display:none;
+    background-color:#fff;
+    z-index:9999;
+    @include css(transform-origin,center top);
+  }
+  &.mg-select-expand{
+    .mg-select-option{
+      display:block;
+      @include css(animation,mg-select-option .4s);
+    }
+  }
+  .mg-select{
+    position: relative;
+    width:100%;
+    height:$inputHeight;
+    line-height: $inputHeight;
+    padding:0 25px 0 10px;
+    border:$border;
+    cursor:pointer;
+    &.mg-expand{
+      border-color:#00f;
+    }
+    .mg-select-content{
+      width:100%;
+      height:100%;
+      @extend %text-ellipsis;
+      >*{
+        cursor:auto;
+      }
+    }
+  }
+  .mg-select-search{
+   display:none;
+  }
+  .mg-select-list{
+    position: relative;
+    padding:0;
+    margin:0;
+    overflow:auto;
+    background-color:#fff;
+    .mg-select-list{
+      overflow:hidden;
+      @include css(animation,mg-select-option .4s);
+    }
+    @include css(user-select,none);
+    li{
+      position: relative;
+      width:100%;
+      list-style:none;
+      cursor:pointer;
+      padding: 0;
+      min-height:$itemHeight;
+      >div{
+        @extend %text-ellipsis;
+        position: relative;
+        padding-right:10px;
+        width:100%;
+        background-clip:padding-box;
+        height:100%;
+        line-height:$itemHeight;
+        &:hover{
+          background-color:#eee;
+        }
+        &.select{
+          color:#fff;
+          background-color:#3887fd;
+          .mg-select-ctrl{
+            &:before{
+              border-color:#fff;
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+
+  &.mg-select-filter{
+    .mg-select-list{
+      margin:3px 0 0 0;
+      .mg-select-list{
+        margin:0;
+      }
+    }
+    .mg-select-search{
+      $iconSize:14px;
+      display:block;
+      position: relative;
+      width:100%;
+      padding:3px;
+      >div{
+        position: relative;
+        height:$inputHeight;
+        border:$border;
+        overflow: hidden;
+        padding:0;
+      }
+      .fa{
+        position: absolute;
+        width:$iconSize;
+        height:$iconSize;
+        top:50%;
+        right:10px;
+        font-size: 14px;
+        color: $iconColor;
+        margin-top:-$iconSize / 2;
+      }
+      .remove-keyword{
+        $size:20px;
+        position: absolute;
+        width:$size;
+        height:$size;
+        right:10px;
+        top:50%;
+        margin-top:-10px;
+        font-size:14px;
+        background-image: url('./image/remove.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size:100%;
+        cursor:pointer;
+      }
+      .input-wrapper{
+        position: absolute;
+        top:0;
+        left:10px;
+        right:30px;
+        border:none;
+        height:100%;
+        outline:none;
+      }
+      input{
+        position: absolute;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        border:none;
+        outline:none;
+      }
+    }
+  }
+}
+
+//multi select
+.mg-select-comp{
+  &.mg-select-multi{
+    height:auto;
+    .mg-select{
+      height:auto;
+      padding: 0;
+      min-height:$inputHeight;
+      line-height:initial;
+    }
+    .mg-select-content{
+      padding:4px 4px 0 4px;
+      height:auto;
+      overflow:auto;
+      white-space:normal;
+      >span{
+        position: relative;
+        display:inline-block;
+        padding:2px 15px 2px 4px;
+        border-radius:.15em;
+        margin-right:5px;
+        background-color:#eee;
+        max-width:30%;
+        @extend %text-ellipsis;
+        i{
+          position: absolute;
+          right: 2px;
+          top: 5px;
+          cursor:pointer;
+        }
+      }
+    }
+  }
+}

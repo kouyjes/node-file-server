@@ -1,0 +1,100 @@
+@import "../../../util/css/util";
+@import "../../../util/css/color";
+.mg-map{
+  position: relative;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  .leaflet-control-attribution{
+    display: none;
+  }
+  &.drawing{
+    cursor: crosshair;
+  }
+  .map-tool-options{
+    position: absolute;
+    z-index: 200000;
+    top:20px;
+    right:20px;
+    $toolSize:30px;
+    white-space: nowrap;
+    background-color: #fff;
+    border:1px solid #b6b6ce;
+    padding:4px 10px;
+    cursor:auto;
+    .map-option-btn{
+      float:left;
+      width:$toolSize;
+      height:$toolSize;
+      margin-right:8px;
+      cursor:pointer;
+      border:1px solid #83c193;
+      padding:2px;
+      &:active{
+        background-color: #b6ecba;
+      }
+      &.selected{
+        background-color: rgba(175, 145, 64, 0.38);
+        border-color: $basicColor;
+      }
+      &:last-child{
+        margin-right:0;
+      }
+    }
+    .tool-icon{
+      width:100%;
+      height:100%;
+      background-size:100% 100%;
+    }
+    .rect-icon{
+      background-image: url('icons/rect.svg');
+    }
+    .polygon-icon{
+      background-image: url('icons/polygon.svg');
+    }
+    .circle-icon{
+      background-image: url('icons/circle.svg');
+    }
+  }
+  svg{
+
+    .point{
+      fill: #fff;
+      stroke: blue;
+      &.start-point{
+        fill:red;
+      }
+    }
+    .current-line{
+      stroke: rgba(0, 0, 255, 0.46);
+      stroke-width: 4px;
+      stroke-dasharray: 10px;
+    }
+    .circle-radius-line{
+      stroke: rgba(0, 0, 255, 0.46);
+      stroke-width: 4px;
+      stroke-dasharray: 10px;
+    }
+    .selection-area{
+      fill: rgba(255, 0, 0, 0.26);
+      stroke: #74af80;
+      stroke-width: 4px;
+    }
+    g.finished{
+      .current-line,.current-point,.circle-radius-line,.circle-help{
+        display: none;
+      }
+      .rect-help-circle{
+        display:block;
+      }
+    }
+    .polygon-area{
+      fill: none;
+      stroke: #74af80;
+      stroke-width: 4px;
+      &.finished{
+        fill: rgba(255, 0, 0, 0.26);
+      }
+    }
+  }
+}

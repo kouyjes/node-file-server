@@ -1,0 +1,66 @@
+@import "../../../../util/css/util";
+@import "../../../../util/css/color";
+.file-manager{
+  width:100%;
+  height:100%;
+  overflow: hidden;
+  @include css(user-select,none);
+  &,div,header,ul,li{
+    box-sizing: border-box;
+  }
+  ul{
+    padding:0;
+    margin:0;
+  }
+  position: relative;
+  .dir-item{
+    font-size:12px;
+    width:120px;
+    height:125px;
+    list-style:none;
+    float:left;
+    overflow: hidden;
+    &:hover{
+      background-color:#e4dbdb;
+      border-radius:.25em;
+    }
+    >div{
+      width:100%;
+      height:80px;
+      padding:10px 25px;
+      background-image:url("images/dir.svg");
+      background-size: 100%;
+      background-clip: content-box;
+    }
+    a{
+      display: inline-block;
+      width:100%;
+      text-align: center;
+      padding-top:8px;
+      @extend %text-ellipsis;
+    }
+  }
+
+  .file-container{
+    width:100%;
+    height:100%;
+    position: relative;
+    $headerHeight:100px;
+    padding-top:$headerHeight;
+    >header{
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:$headerHeight;
+      background-color:#cdd;
+    }
+    >div{
+      position: relative;
+      width:100%;
+      height:100%;
+      padding:8px;
+      overflow:auto;
+    }
+  }
+}

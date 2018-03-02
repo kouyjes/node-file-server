@@ -1,0 +1,23 @@
+<ul>
+    <li v-for="item in items" key="item.value || item[display]" v-show="!keyword || item.matched">
+        <div :class="{'select':isSelect(item)}"
+             @click="toggleSelect(item)"
+             :style="{'padding-left':(10 + level * 20) + 'px','padding-right':(hasChildren(item)?30:10)+'px'}"
+             :title="item[display]">
+            <highlight :keyword="keyword" class="mg-text" :text="item[display]"></highlight>
+            <i v-if="hasChildren(item)"
+               class="mg-select-ctrl mg-list-expand"
+               :class="{'mg-expand':item.expand}"
+               @click.stop="toggleExpand(items,item)"></i>
+        </div>
+        <mg-select-list v-if="item.expand" class="mg-select-list"
+                        :level="level+1"
+                        :identify="identify"
+                        :display="display"
+                        :keyword="keyword"
+                        :select="select"
+                        :items="item.children"
+                        @change="toggleSelect($event)">
+        </mg-select-list>
+    </li>
+</ul>

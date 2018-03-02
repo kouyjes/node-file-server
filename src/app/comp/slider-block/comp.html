@@ -1,0 +1,28 @@
+<div class="mg-slider-block">
+    <header class="slider-header">关系密切度</header>
+    <div class="block-content">
+        <div class="block-header">高</div>
+        <div class="block">
+            <template v-if="disperse">
+                <div class="block-item" :style="{height:(100/sliderCount)+'%',backgroundColor:getSliderBgColor(i)}" v-for="(i,index) in sliderCount">
+                    <i class="b-top">{{(sliderCount - index) * (100/sliderCount)+'%'}}</i>
+                    <i v-if="index===sliderCount-1" class="b-bottom">{{(sliderCount - index - 1) * (100/sliderCount)+'%'}}</i>
+                </div>
+            </template>
+            <template v-else>
+                <div class="block-disperse"></div>
+            </template>
+            <div ref="indicator" class="block-indicator">
+                <div ref="indicatorMax" :style="{bottom:indicator.max + 'px'}" class="max">
+                    <div class="max-content"></div>
+                    <i v-if="!disperse" class="indicator-tips">{{maxCaption}}</i>
+                </div>
+                <div ref="indicatorMin" :style="{bottom:indicator.min + 'px'}" class="min">
+                    <div class="min-content"></div>
+                    <i v-if="!disperse" class="indicator-tips">{{minCaption}}</i>
+                </div>
+            </div>
+        </div>
+        <div class="block-footer">低</div>
+    </div>
+</div>

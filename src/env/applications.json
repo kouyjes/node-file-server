@@ -1,0 +1,19 @@
+{
+  "modules":[
+    {"name":"env","url":"module/env/index.js"},
+    {"name":"http","url":"module/http/index.js"},
+    {"name":"util","url":"module/util/index.js"}
+  ],
+  "apps":[
+    {"name":"comp","url":"app/comp/index.js"},
+    {"name":"directive","url":"app/directive/index.js"},
+    {"name":"image","url":"app/image/index.js"},
+    {"name":"index","url":"app/index/index.js"},
+    {"name":"file-manager","url":"app/file-manager/index.js"}
+  ],
+  "init":["init/index.js"],
+  "main":["index.js"],
+  "attributes":{
+    "apiPrefix":"/api"
+  }
+}

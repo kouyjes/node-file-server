@@ -1,0 +1,107 @@
+.mg-dropdown {
+  position: relative;
+  display: inline-block; }
+@keyframes mg-dropdown-enter {
+  from {
+    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0); }
+  to {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1); } }
+@-webkit-keyframes mg-dropdown-enter {
+  from {
+    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0); }
+  to {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1); } }
+@-moz-keyframes mg-dropdown-enter {
+  from {
+    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0); }
+  to {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1); } }
+@-ms-keyframes mg-dropdown-enter {
+  from {
+    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0); }
+  to {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1); } }
+@-o-keyframes mg-dropdown-enter {
+  from {
+    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0); }
+  to {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1); } }
+  .mg-dropdown .dropdown-pop {
+    border: 1px solid #e9e9e9;
+    transform-origin: top;
+    -webkit-transform-origin: top;
+    -moz-transform-origin: top;
+    -ms-transform-origin: top;
+    -o-transform-origin: top; }
+    .mg-dropdown .dropdown-pop.abs-layout {
+      position: absolute;
+      background-color: #fff;
+      z-index: 100;
+      top: 100%;
+      left: 50%;
+      animation: mg-dropdown-enter 0.4s;
+      -webkit-animation: mg-dropdown-enter 0.4s;
+      -moz-animation: mg-dropdown-enter 0.4s;
+      -ms-animation: mg-dropdown-enter 0.4s;
+      -o-animation: mg-dropdown-enter 0.4s; }
+    .mg-dropdown .dropdown-pop.fixed-layout {
+      position: fixed;
+      z-index: 2;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      background-color: #fff;
+      transition: opacity 0.4s;
+      -webkit-transition: opacity 0.4s;
+      -moz-transition: opacity 0.4s;
+      -ms-transition: opacity 0.4s;
+      -o-transition: opacity 0.4s; }
+      .mg-dropdown .dropdown-pop.fixed-layout.layout-finished {
+        opacity: 1;
+        animation: mg-dropdown-enter 0.4s;
+        -webkit-animation: mg-dropdown-enter 0.4s;
+        -moz-animation: mg-dropdown-enter 0.4s;
+        -ms-animation: mg-dropdown-enter 0.4s;
+        -o-animation: mg-dropdown-enter 0.4s; }
+
+/*# sourceMappingURL=comp.css.map */

@@ -1,0 +1,39 @@
+@import "../../../util/css/util";
+@import "../../../util/css/color";
+.mg-dropdown{
+  position: relative;
+  display: inline-block;
+  @include keyframes(mg-dropdown-enter){
+    from{
+      @include css(transform,scaleY(0));
+    }
+    to{
+      @include css(transform,scaleY(1));
+    }
+  }
+  .dropdown-pop{
+    border:1px solid $borderColor;
+    @include css(transform-origin,top);
+    &.abs-layout{
+      position: absolute;
+      background-color: #fff;
+      z-index:100;
+      top:100%;
+      left:50%;
+      @include css(animation,mg-dropdown-enter .4s);
+    }
+    &.fixed-layout{
+      position: fixed;
+      z-index:2;
+      left:0;
+      top:0;
+      opacity: 0;
+      background-color: #fff;
+      @include css(transition,opacity .4s);
+      &.layout-finished{
+        opacity: 1;
+        @include css(animation,mg-dropdown-enter .4s);
+      }
+    }
+  }
+}

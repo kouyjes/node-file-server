@@ -1,0 +1,62 @@
+.file-manager .dir-item a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.file-manager {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  position: relative; }
+  .file-manager, .file-manager div, .file-manager header, .file-manager ul, .file-manager li {
+    box-sizing: border-box; }
+  .file-manager ul {
+    padding: 0;
+    margin: 0; }
+  .file-manager .dir-item {
+    font-size: 12px;
+    width: 120px;
+    height: 125px;
+    list-style: none;
+    float: left;
+    overflow: hidden; }
+    .file-manager .dir-item:hover {
+      background-color: #e4dbdb;
+      border-radius: .25em; }
+    .file-manager .dir-item > div {
+      width: 100%;
+      height: 80px;
+      padding: 10px 25px;
+      background-image: url("images/dir.svg");
+      background-size: 100%;
+      background-clip: content-box; }
+    .file-manager .dir-item a {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      padding-top: 8px; }
+  .file-manager .file-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding-top: 100px; }
+    .file-manager .file-container > header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background-color: #cdd; }
+    .file-manager .file-container > div {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      overflow: auto; }
+
+/*# sourceMappingURL=comp.css.map */

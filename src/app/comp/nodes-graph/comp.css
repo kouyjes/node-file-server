@@ -1,0 +1,162 @@
+.nodes-graph-panel svg .line foreignObject > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.nodes-graph-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+@keyframes node-img-enter {
+  from {
+    width: 200%;
+    height: 200%;
+    margin-top: -25%;
+    margin-left: -25%;
+    background-color: #fc5d3f; }
+  to {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    background-color: transparent; } }
+@-webkit-keyframes node-img-enter {
+  from {
+    width: 200%;
+    height: 200%;
+    margin-top: -25%;
+    margin-left: -25%;
+    background-color: #fc5d3f; }
+  to {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    background-color: transparent; } }
+@-moz-keyframes node-img-enter {
+  from {
+    width: 200%;
+    height: 200%;
+    margin-top: -25%;
+    margin-left: -25%;
+    background-color: #fc5d3f; }
+  to {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    background-color: transparent; } }
+@-ms-keyframes node-img-enter {
+  from {
+    width: 200%;
+    height: 200%;
+    margin-top: -25%;
+    margin-left: -25%;
+    background-color: #fc5d3f; }
+  to {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    background-color: transparent; } }
+@-o-keyframes node-img-enter {
+  from {
+    width: 200%;
+    height: 200%;
+    margin-top: -25%;
+    margin-left: -25%;
+    background-color: #fc5d3f; }
+  to {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    background-color: transparent; } }
+  .nodes-graph-panel svg .hidden {
+    display: none !important; }
+  .nodes-graph-panel svg .line-arrow {
+    stroke: #fc5d3f;
+    fill: #fc5d3f; }
+  .nodes-graph-panel svg div, .nodes-graph-panel svg img {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box; }
+  .nodes-graph-panel svg .node foreignObject {
+    overflow: visible;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0); }
+    .nodes-graph-panel svg .node foreignObject .node-content {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 1px solid #3987fc;
+      cursor: pointer;
+      background-color: #c1fb89; }
+      .nodes-graph-panel svg .node foreignObject .node-content[node-shape="circle"] {
+        border-radius: 50%; }
+        .nodes-graph-panel svg .node foreignObject .node-content[node-shape="circle"] img {
+          border-radius: 50%; }
+      .nodes-graph-panel svg .node foreignObject .node-content[node-shape="rect"] {
+        border-radius: .25em; }
+        .nodes-graph-panel svg .node foreignObject .node-content[node-shape="rect"] img {
+          border-radius: .25em; }
+    .nodes-graph-panel svg .node foreignObject .node-text {
+      margin-left: -20%;
+      margin-top: 4px;
+      height: 20px;
+      line-height: 20px;
+      white-space: nowrap;
+      border-radius: 10px;
+      text-align: center; }
+      .nodes-graph-panel svg .node foreignObject .node-text:empty {
+        display: none; }
+    .nodes-graph-panel svg .node foreignObject span {
+      background: #3987fc;
+      border-radius: 10px;
+      padding: 0 12px;
+      color: #fff; }
+  .nodes-graph-panel svg .node img {
+    width: 100%;
+    height: 100%;
+    background-color: #c1fb89;
+    overflow: hidden;
+    animation: node-img-enter 0.4s;
+    -webkit-animation: node-img-enter 0.4s;
+    -moz-animation: node-img-enter 0.4s;
+    -ms-animation: node-img-enter 0.4s;
+    -o-animation: node-img-enter 0.4s; }
+  .nodes-graph-panel svg .node.selected div:nth-child(1) {
+    border-color: #fc5d3f !important; }
+  .nodes-graph-panel svg .node.selected div:nth-child(2) span {
+    background-color: #fc5d3f; }
+  .nodes-graph-panel svg .line path {
+    stroke: #fc5d3f;
+    stroke-width: 1px;
+    fill: none;
+    cursor: pointer; }
+    .nodes-graph-panel svg .line path:hover {
+      stroke: #fa9d43; }
+  .nodes-graph-panel svg .line foreignObject {
+    overflow: visible; }
+    .nodes-graph-panel svg .line foreignObject > div {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      margin-left: -60px;
+      color: #3987fc; }
+      .nodes-graph-panel svg .line foreignObject > div > span {
+        font-size: .7em;
+        cursor: pointer;
+        padding: 0 4px;
+        border-radius: 4px;
+        white-space: nowrap; }
+  .nodes-graph-panel svg .line.selected path {
+    stroke: #fa9d43; }
+
+/*# sourceMappingURL=comp.css.map */

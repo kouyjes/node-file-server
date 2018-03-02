@@ -1,0 +1,30 @@
+{
+  "name": "node-file-server",
+  "version": "1.0.0",
+  "description": "node file server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kouyjes/node-file-server.git"
+  },
+  "keywords": [
+    "node",
+    "file",
+    "server"
+  ],
+  "author": "kouyj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kouyjes/node-file-server/issues"
+  },
+  "homepage": "https://github.com/kouyjes/node-file-server#readme",
+  "dependencies": {
+    "multer": "^1.3.0"
+  },
+  "devDependencies": {
+    "nm-web-server": "^1.1.31"
+  }
+}

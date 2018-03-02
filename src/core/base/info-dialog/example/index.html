@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog Demo</title>
+    <link rel="stylesheet" href="../dest/css/dialog.css"/>
+    <script src="../dest/js/dialog.js"></script>
+    <style type="text/css">
+        html,body{
+            margin:0;
+            padding:0;
+            height:100%;
+            overflow:hidden;
+            background: -ms-linear-gradient(top, #fff,  #3f3dd0);
+            background:-moz-linear-gradient(top,#3f3dd0,#f6f6f8);
+            background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#3f3dd0), to(#fff))
+        }
+        button{
+            margin-left:20px;
+            display: block;
+            -webkit-appearance: none;
+            background: #83c1f7;
+            padding: 8px 10px;
+            outline: none;
+            box-shadow: none;
+            border: none;
+            cursor:pointer;
+            margin-top:20px;
+            width:200px;
+        }
+        table{
+            width:100%;
+            height:200px;
+            border-collapse: collapse;
+        }
+        thead{
+            background-color:#c5bf7f;
+            color: #fff;
+        }
+        th,td{
+            padding:4px;
+        }
+        tr:nth-child(odd) td{
+            background-color:#83c1f7;
+        }
+        [type="text/template"]{
+            display:none;
+        }
+        button:active{
+            background-color:#7cb0de;
+        }
+    </style>
+    <script>
+        var index = 1,timeout,count = 0;
+        var text = ['曾经沧海难为水，除却巫山不是云。 —— 元稹《离思五首·其四》'];
+        text.push('夜来风雨声，花落知多少。 —— 孟浩然《春晓》');
+        text.push('行路难！行路难！多歧路，今安在？长风破浪会有时，直挂云帆济沧海。 —— 李白《行路难·其一》');
+        text.push('相见时难别亦难，东风无力百花残。 —— 李商隐《无题·相见时难别亦难》');
+        text.push('问渠哪得清如许？为有源头活水来。 —— 朱熹《活水亭观书有感二首·其一》');
+        function randomColor(){
+            var r = parseInt(255 * Math.random()),
+                    g = parseInt(255 * Math.random()),
+                    b = parseInt(255 * Math.random());
+            return 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+        function randomText(){
+            return text[count++ % text.length];
+        }
+        function showPanel(){
+            var InfoWindow = HERE.UI.InfoWindow;
+            var tds = Array.prototype.slice.call(document.querySelectorAll('#panelTemplate .table-row'));
+            tds.forEach(function (td) {
+                td.innerText = randomText();
+            });
+            var template = document.querySelector('#panelTemplate').innerHTML;
+            InfoWindow.show({
+                        autoRemove:true,
+                        autoRemoveTime:5000,
+                        align:'right',
+                        css:{
+                            backgroundColor:randomColor()
+                        },
+                        contentElements:[template]});
+        }
+        function showDialog(type){
+            if(!type){
+                type = 'info';
+            }
+
+            timeout = parseInt(Math.random() * 15000);
+            timeout = Math.max(3000,timeout);
+            var content = randomText();
+            var html = document.createElement('div');
+            html.innerHTML = content;
+
+
+            var Dialog = HERE.UI.InfoDialog;
+            Dialog[type]({
+                maxHeight:'200px',
+                content:content,
+                autoRemove:true,
+                css:{
+                    backgroundColor:randomColor()
+                },
+                align:'right',
+                autoRemoveTime:timeout
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="showPanel()">show Info Panel</button>
+    <button onclick="showDialog('info')">show InfoDialog : info</button>
+    <button onclick="showDialog('warn')">show InfoDialog : warn</button>
+    <button onclick="showDialog('error')">show InfoDialog : error</button>
+    <div id="panelTemplate" type="text/template">
+        <table>
+            <thead>
+                <th>时间</th>
+                <th>地点</th>
+                <th>任务</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-row" colspan="3"></td>
+                </tr>
+                <tr>
+                    <td class="table-row" colspan="3"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
