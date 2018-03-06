@@ -3,13 +3,8 @@ function execute(chain,request,response){
         if(object instanceof Buffer){
             object = object.toString();
         }
-        var resObj = {
-            errno:200,
-            errmsg:'',
-            data:object
-        };
-        resObj = JSON.stringify(resObj,null,4);
-        response.outputContent('application/json',resObj);
+       var result = JSON.stringify(object,null,4);
+        response.outputContent('application/json;charset=utf-8',result);
 
     };
     chain.next();

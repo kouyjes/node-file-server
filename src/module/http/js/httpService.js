@@ -132,6 +132,19 @@
                 throw data;
             }.bind(this));
         };
+        this.uploadFile = function (url,data,pathParams,queryParams) {
+            var url = this.getRequestUrl(url,pathParams,queryParams);
+            return $.ajax({
+                method:'post',
+                url:url,
+                cache:false,
+                async:true,
+                processData:false,
+                dataType:'json',
+                contentType:'multipart/form-data',
+                data:data
+            });
+        };
         this.get = function (url,pathParams,queryParams) {
             var request = {
                 url:url,

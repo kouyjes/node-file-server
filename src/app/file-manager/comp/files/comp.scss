@@ -5,7 +5,7 @@
   height:100%;
   overflow: hidden;
   @include css(user-select,none);
-  &,div,header,ul,li{
+  &,div,header,ul,li,a{
     box-sizing: border-box;
   }
   ul{
@@ -13,7 +13,7 @@
     margin:0;
   }
   position: relative;
-  .dir-item{
+  .block-item{
     font-size:12px;
     width:120px;
     height:125px;
@@ -28,7 +28,6 @@
       width:100%;
       height:80px;
       padding:10px 25px;
-      background-image:url("images/dir.svg");
       background-size: 100%;
       background-clip: content-box;
     }
@@ -36,8 +35,20 @@
       display: inline-block;
       width:100%;
       text-align: center;
-      padding-top:8px;
+      padding:8px;
       @extend %text-ellipsis;
+    }
+  }
+
+  .dir-item{
+    >div{
+      background-image:url("images/dir.svg");
+    }
+  }
+
+  .file-item{
+    >div{
+      background-image:url("images/file.svg");
     }
   }
 
@@ -45,7 +56,7 @@
     width:100%;
     height:100%;
     position: relative;
-    $headerHeight:100px;
+    $headerHeight:80px;
     padding-top:$headerHeight;
     >header{
       position: absolute;
@@ -54,6 +65,88 @@
       width:100%;
       height:$headerHeight;
       background-color:#cdd;
+
+      .tool{
+        height:45px;
+        $iconSize:30px;
+        background-color:#ddd;
+        padding:6px;
+        >*{
+          float:right;
+        }
+        .search{
+          $width:280px;
+          width:$width;
+          background-image: url("./images/search.svg");
+          background-repeat: no-repeat;
+          background-position: ($width - 30) 4px;
+          background-size:20px;
+          padding-right:45px;
+          background-color:#fff;
+          border-radius:$iconSize / 2;
+          overflow:hidden;
+          input{
+            border:none;
+            outline:none;
+            width:100%;
+            height:30px;
+            padding:0 6px 0 10px;
+          }
+        }
+        .sort-type,.layout-type{
+          width:$iconSize;
+          height:$iconSize;
+          border:1px solid #4234e4;
+          margin-left:10px;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size:100%;
+          cursor:pointer;
+        }
+        .sort-type{
+          background-image:url("./images/sort.svg");
+        }
+        .grid{
+          background-image:url("./images/grid.svg");
+        }
+        .list{
+          background-image:url("./images/list.svg");
+        }
+      }
+
+      .info{
+        $color:#4287ed;
+        font-size: 12px;
+        position: relative;
+        $pRight:100px;
+        padding-right:$pRight;
+        padding:8px 10px;
+        color:$color;
+        .path-route{
+          width:100%;
+        }
+        .route-item,.last-route{
+          cursor: pointer;
+        }
+        .route-item{
+          &:not(:last-child){
+            &:after{
+              content:'>'
+            }
+          }
+          &:last-child{
+            cursor:auto;
+            color: #525242;
+          }
+        }
+        .summary{
+          position: absolute;
+          top:0;
+          right:0;
+          padding: 8px 10px;
+        }
+      }
+
     }
     >div{
       position: relative;

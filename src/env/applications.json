@@ -2,7 +2,8 @@
   "modules":[
     {"name":"env","url":"module/env/index.js"},
     {"name":"http","url":"module/http/index.js"},
-    {"name":"util","url":"module/util/index.js"}
+    {"name":"util","url":"module/util/index.js"},
+    {"name":"network","url":"module/network/index.js"}
   ],
   "apps":[
     {"name":"comp","url":"app/comp/index.js"},

@@ -42,26 +42,6 @@ var config = {
                     dir:buildDir
                 }
             ]
-        },
-        {
-            serverName:'web server',
-            multiCpuSupport:false,
-            zipResponse:false,
-            sessionCookieName:'x3_session',
-            sessionCookiePath:null,
-            disabledAgentCache:true,
-            port:8081,
-            proxy:proxy,
-            docBase:[
-                {
-                    path:'/',
-                    dir:path.resolve(dir,'../release')
-                },
-                {
-                    path:'/api',
-                    dir:apiDir
-                }
-            ]
         }
     ]
 };
