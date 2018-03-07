@@ -141,7 +141,7 @@
                 async:true,
                 processData:false,
                 dataType:'json',
-                contentType:'multipart/form-data',
+                contentType:false,
                 data:data
             });
         };

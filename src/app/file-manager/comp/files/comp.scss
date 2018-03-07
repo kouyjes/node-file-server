@@ -18,7 +18,7 @@
     width:120px;
     height:125px;
     list-style:none;
-    float:left;
+    display: inline-block;
     overflow: hidden;
     &:hover{
       background-color:#e4dbdb;
@@ -154,6 +154,46 @@
       height:100%;
       padding:8px;
       overflow:auto;
+    }
+  }
+
+  .upload-task{
+    position: absolute;
+    bottom:0;
+    right:30px;
+    border:1px solid #ccc;
+    $headerHeight:38px;
+    $bottomHeight:60px;
+    padding-top:$headerHeight;
+    padding-bottom:$bottomHeight;
+    width:30%;
+    >header{
+      position:absolute;
+      top:0;
+      left:0;
+      height:$headerHeight;
+      width:100%;
+      padding:8px;
+      color:#fff;
+      font-size:14px;
+      background-color:rgba(130, 124, 243, 0.52);
+    }
+    >footer{
+      position:absolute;
+      bottom:0;
+      left:0;
+      height:$bottomHeight;
+      width:100%;
+    }
+    >div{
+      width:100%;
+      min-height:300px;
+      max-height:60vh;
+      overflow:auto;
+      .task-item{
+        padding:8px 4px;
+        overflow:hidden;
+      }
     }
   }
 }

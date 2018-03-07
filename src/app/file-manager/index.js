@@ -5,6 +5,10 @@ Application.app('file-manager',function () {
         component:Application.component('file-comp')
     };
     this.resource = {
-        js:['comp/files/comp.js','service/fileService.js']
+        js:[
+            'comp/files/comp.js',
+            'comp/paging/comp.js',
+            'service/fileService.js'
+        ]
     };
-},['network']);
+},['network','util']);

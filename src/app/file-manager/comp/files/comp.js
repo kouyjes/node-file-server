@@ -49,25 +49,36 @@
         });
     }
     app.ready(function () {
+        var pathStorageKey = 'LAST_DIR_PATH';
         var fileService = app.getService('fileService');
+        var session = app.getService('session');
         var eventNames = ['drag','dragstart','dragend','dragover','dragenter','dragleave','drop'];;
         var def = {
             templateUrl:'comp/files/comp.html',
             cssUrl:'comp/files/comp.css',
             data:function () {
+                var pathRoute = session.object(pathStorageKey);
                 return {
                     layoutType:'grid',
-                    pathRoute:[{
+                    pathRoute:pathRoute || [{
                         path:'',
                         name:'全部文件'
                     }],
                     files:[],
+                    tasks:[],
                     events:{
                         dragStart:null,
                         dragEnter:null,
                         dragEnd:null
                     }
                 };
+            },
+            computed:{
+                currentDir:function () {
+                    return this.pathRoute.map(function (route) {
+                        return route.path;
+                    }).join('/');
+                }
             },
             methods:{
                 switchLayout:function () {
@@ -103,18 +114,27 @@
                     this.loadFiles();
                 },
                 loadFiles:function () {
-                    var path = this.pathRoute.map(function (route) {
-                        return route.path;
-                    }).join('/');
+                    session.object(pathStorageKey,this.pathRoute);
+                    var path = this.currentDir;
                     return fileService.files(path).then(function (files) {
                         this.files = files;
                     }.bind(this));
                 },
                 dropItem:function (dataTransfer) {
                     getUploadItems(dataTransfer).then(function (items) {
+                        this.tasks = items.map(function (item) {
+                            return {
+                                progress:0,
+                                item:item
+                            };
+                        });
+                        fileService.uploadFile(items[0],this.currentDir).then(function () {
+                            this.loadFiles();
+                        }.bind(this));
+                    }.bind(this));
 
-                        fileService.uploadFile(items[0]);
-                    });
+                },
+                executeTasks:function () {
 
                 },
                 bindDragEvents:function () {

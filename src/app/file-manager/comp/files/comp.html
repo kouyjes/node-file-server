@@ -38,4 +38,18 @@
             </ul>
         </div>
     </div>
+    <div class="upload-task">
+        <header>任务列表</header>
+        <div>
+            <ul>
+                <li class="task-item" v-for="task in 20">
+                    <div class="progress"></div>
+                    <div class="task-name">任务名称{{task}}</div>
+                </li>
+            </ul>
+        </div>
+        <footer>
+            <task-paging></task-paging>
+        </footer>
+    </div>
 </div>
