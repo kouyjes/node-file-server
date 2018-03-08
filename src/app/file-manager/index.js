@@ -8,6 +8,8 @@ Application.app('file-manager',function () {
         js:[
             'comp/files/comp.js',
             'comp/paging/comp.js',
+            'comp/progress-bar/comp.js',
+            'comp/file-upload/comp.js',
             'service/fileService.js'
         ]
     };

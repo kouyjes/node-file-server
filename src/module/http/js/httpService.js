@@ -16,6 +16,7 @@
             complete:[],
             error:[]
         };
+        this.ajax = $.ajax.bind($);
         this.addEventListener = function (type,handler) {
             if(typeof handler !== 'function'){
                 return;
@@ -131,19 +132,6 @@
                 this.executeEventHandler('error',arguments,this);
                 throw data;
             }.bind(this));
-        };
-        this.uploadFile = function (url,data,pathParams,queryParams) {
-            var url = this.getRequestUrl(url,pathParams,queryParams);
-            return $.ajax({
-                method:'post',
-                url:url,
-                cache:false,
-                async:true,
-                processData:false,
-                dataType:'json',
-                contentType:false,
-                data:data
-            });
         };
         this.get = function (url,pathParams,queryParams) {
             var request = {

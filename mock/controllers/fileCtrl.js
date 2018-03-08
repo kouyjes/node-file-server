@@ -143,7 +143,7 @@ exports.upload = function (request,response) {
         var filePath = path.resolve(config.workspace,normalizePath(dir));
         filePath = path.resolve(filePath,normalizePath(filename));
 
-        if(isFile){
+        if(isFile === 'true'){
             return saveFile(file,filePath).then(function () {
                 response.writeJson({
                     errNo:200,

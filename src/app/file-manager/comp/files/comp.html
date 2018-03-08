@@ -27,29 +27,16 @@
         </header>
         <div>
             <ul>
-                <li @click="clickDir(file)" v-if="file.isDir" v-for="file in files" class="block-item dir-item">
+                <li @click="clickDir(file)" :title="file.name" v-if="file.isDir" v-for="file in files" class="block-item dir-item">
                     <div></div>
                     <a>{{file.name}}</a>
                 </li>
-                <li v-else class="block-item file-item">
+                <li v-else class="block-item file-item" :title="file.name">
                     <div></div>
-                    <a :title="file.name">{{file.name}}</a>
+                    <a>{{file.name}}</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="upload-task">
-        <header>任务列表</header>
-        <div>
-            <ul>
-                <li class="task-item" v-for="task in 20">
-                    <div class="progress"></div>
-                    <div class="task-name">任务名称{{task}}</div>
-                </li>
-            </ul>
-        </div>
-        <footer>
-            <task-paging></task-paging>
-        </footer>
-    </div>
+    <file-upload @upload-changed="uploadChanged" :current-dir="currentDir"></file-upload>
 </div>

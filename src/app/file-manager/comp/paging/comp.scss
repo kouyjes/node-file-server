@@ -1,8 +1,44 @@
 .paging{
+  display: inline-block;
+  &,div,a{
+    box-sizing: border-box;
+  }
   .p-ing{
     float:left;
-    padding:4px 8px;
-    border:1px solid #ccc;
-    
+    border:1px solid #fff;
+    color:#fff;
+    min-width:35px;
+    height:30px;
+    padding:2px 4px;
+    cursor: pointer;
+    &:not(:last-child){
+      border-right:none;
+    }
+    text-align: center;
+
+    &:hover,&.select{
+      background-color:#c5b8b8;
+    }
+
+    &.pre,&.next{
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size:75%;
+      padding: 6px 0;
+      min-width:30px;
+      &:hover{
+        background-color:transparent;
+      }
+    }
+    &.pre{
+      background-image:url("./images/prepage.svg");
+    }
+    &.next{
+      background-image:url("./images/nextpage.svg");
+    }
+    &.disable{
+      pointer-events: none;
+      background-color:rgba(218, 222, 218, 0.73);
+    }
   }
 }

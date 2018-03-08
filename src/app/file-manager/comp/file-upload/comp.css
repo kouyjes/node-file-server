@@ -1,0 +1,85 @@
+.file-upload.upload-task > div .task-item > div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.file-upload.upload-task {
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+  border: 1px solid #ccc;
+  padding-top: 38px;
+  padding-bottom: 40px;
+  width: 600px;
+  background-color: #fff; }
+  .file-upload.upload-task > header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 38px;
+    width: 100%;
+    padding: 8px;
+    color: #fff;
+    font-size: 14px;
+    background-color: rgba(130, 124, 243, 0.52); }
+  .file-upload.upload-task > footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    padding: 5px 0;
+    padding-right: 12px;
+    text-align: right;
+    background-color: rgba(130, 124, 243, 0.52); }
+  .file-upload.upload-task > div {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    font-size: 14px;
+    padding-top: 30px; }
+    .file-upload.upload-task > div .file-name {
+      width: 160px; }
+    .file-upload.upload-task > div .file-size {
+      width: 80px; }
+    .file-upload.upload-task > div .file-path {
+      width: 140px; }
+    .file-upload.upload-task > div .task-status {
+      width: 200px; }
+    .file-upload.upload-task > div .t-head {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 30px;
+      width: 100%;
+      overflow: hidden;
+      background-color: #b4e6bc; }
+      .file-upload.upload-task > div .t-head > div {
+        float: left;
+        height: 100%;
+        padding: 5px 8px; }
+        .file-upload.upload-task > div .t-head > div:not(:first-child) {
+          border-left: 1px solid #e6ece1; }
+    .file-upload.upload-task > div .t-body {
+      min-height: 300px;
+      max-height: 60vh;
+      overflow: auto; }
+    .file-upload.upload-task > div .task-item {
+      overflow: hidden;
+      width: 100%; }
+      .file-upload.upload-task > div .task-item:not(:first-child) {
+        border-top: 1px solid #f3e0e0; }
+      .file-upload.upload-task > div .task-item > div {
+        float: left;
+        padding: 12px 8px; }
+      .file-upload.upload-task > div .task-item .task-status > * {
+        float: left; }
+      .file-upload.upload-task > div .task-item .task-status .task-progress {
+        width: 100px;
+        height: 20px; }
+      .file-upload.upload-task > div .task-item .task-status a {
+        margin-left: 8px;
+        color: blue;
+        cursor: pointer; }
+
+/*# sourceMappingURL=comp.css.map */

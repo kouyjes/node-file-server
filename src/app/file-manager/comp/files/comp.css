@@ -13,7 +13,7 @@
   -ms-user-select: none;
   -o-user-select: none;
   position: relative; }
-  .file-manager, .file-manager div, .file-manager header, .file-manager ul, .file-manager li, .file-manager a {
+  .file-manager, .file-manager div, .file-manager header, .file-manager footer, .file-manager ul, .file-manager li, .file-manager a {
     box-sizing: border-box; }
   .file-manager ul {
     padding: 0;
@@ -118,37 +118,5 @@
       height: 100%;
       padding: 8px;
       overflow: auto; }
-  .file-manager .upload-task {
-    position: absolute;
-    bottom: 0;
-    right: 30px;
-    border: 1px solid #ccc;
-    padding-top: 38px;
-    padding-bottom: 60px;
-    width: 30%; }
-    .file-manager .upload-task > header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 38px;
-      width: 100%;
-      padding: 8px;
-      color: #fff;
-      font-size: 14px;
-      background-color: rgba(130, 124, 243, 0.52); }
-    .file-manager .upload-task > footer {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 60px;
-      width: 100%; }
-    .file-manager .upload-task > div {
-      width: 100%;
-      min-height: 300px;
-      max-height: 60vh;
-      overflow: auto; }
-      .file-manager .upload-task > div .task-item {
-        padding: 8px 4px;
-        overflow: hidden; }
 
 /*# sourceMappingURL=comp.css.map */

@@ -1,3 +1,5 @@
 <div class="paging">
-    <a class="p-ing" v-for="i in 10">{{i}}</a>
+    <a class="p-ing pre" @click="prePage" :class="{'disable':!preEnable}"></a>
+    <a class="p-ing" v-for="index in pageItems" @click="pageTo(index)" :class="{'select':index===currentPage}">{{index}}</a>
+    <a class="p-ing next" @click="nextPage()" :class="{'disable':!nextEnable}"></a>
 </div>

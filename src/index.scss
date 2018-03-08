@@ -1,4 +1,5 @@
 @import "util/css/util";
+@import "util/css/color";
 body,html{
   width:100%;
   height:100%;
@@ -33,4 +34,27 @@ body,html{
   width:100%;
   height:100%;
   overflow:hidden;
+
+  &,*{
+    &::-webkit-scrollbar-track
+    {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar
+    {
+      $size:8px;
+      width: $size;
+      height: $size;
+      padding-left: 2px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb
+    {
+      background-clip: padding-box;
+      border: 1px solid rgba(255, 255, 255, 0);
+      -webkit-box-shadow: inset 0 0 6px rgba(102,102,102,.3);
+      background-color: $scrollBgColor;
+      border-radius: 10px;
+    }
+  }
 }

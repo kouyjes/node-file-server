@@ -1,0 +1,25 @@
+@import "../../../../util/css/util";
+@import "../../../../util/css/color";
+.progress{
+  position:relative;
+  min-width:80px;
+  min-height:20px;
+  font-size:12px;
+  border:1px solid #ccc;
+  .progress-bar{
+    position: absolute;
+    top:0;
+    left:0;
+    height:100%;
+    @include css(transition,width .6s);
+    background-color:#8181ef;
+  }
+  .progress-text{
+    position: absolute;
+    text-align: center;
+    width:100%;
+    top:50%;
+    margin-top:-8px;
+    @extend %text-ellipsis;
+  }
+}
