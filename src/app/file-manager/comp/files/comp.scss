@@ -13,34 +13,9 @@
     margin:0;
   }
   position: relative;
-  .block-item{
-    font-size:12px;
-    width:120px;
-    height:125px;
-    list-style:none;
-    display: inline-block;
-    overflow: hidden;
-    &:hover{
-      background-color:#e4dbdb;
-      border-radius:.25em;
-    }
-    >div{
-      width:100%;
-      height:80px;
-      padding:10px 25px;
-      background-size: 100%;
-      background-clip: content-box;
-    }
-    a{
-      display: inline-block;
-      width:100%;
-      text-align: center;
-      padding:8px;
-      @extend %text-ellipsis;
-    }
-  }
 
   .dir-item{
+    cursor: pointer;
     >div{
       background-image:url("images/dir.svg");
     }
@@ -50,6 +25,72 @@
     >div{
       background-image:url("images/file.svg");
     }
+  }
+  .grid-layout{
+    .block-item{
+      font-size:12px;
+      width:120px;
+      height:125px;
+      list-style:none;
+      display: inline-block;
+      overflow: hidden;
+      &:hover{
+        background-color:#e4dbdb;
+        border-radius:.25em;
+      }
+      >div{
+        width:100%;
+        height:80px;
+        padding:10px 25px;
+        background-size: 100%;
+        background-clip: content-box;
+      }
+      a{
+        display: inline-block;
+        width:100%;
+        text-align: center;
+        padding:8px;
+        @extend %text-ellipsis;
+      }
+    }
+  }
+
+  .list-layout{
+    li{
+      overflow:hidden;
+      white-space: nowrap;
+      border-bottom:1px solid #f1e5e5;
+      &:hover{
+        background-color:#f5dede;
+      }
+      >*{
+        position: relative;
+        display:inline-block;
+        padding:10px 4px;
+      }
+      .type{
+        width:60px;
+        >div{
+          position: absolute;
+          left: 4px;
+          top: -2px;
+          width: 100%;
+          height: 25px;
+          background-repeat: no-repeat;
+          background-size: 25px;
+        }
+      }
+      .name{
+        width:30%;
+      }
+      .size{
+        width:15%;
+      }
+      .date{
+        width:30%;
+      }
+    }
+
   }
 
   .file-container{
@@ -96,7 +137,7 @@
         .sort-type,.layout-type{
           width:$iconSize;
           height:$iconSize;
-          border:1px solid #4234e4;
+          border:1px solid #a9bce4;
           margin-left:10px;
           background-position: center;
           background-repeat: no-repeat;

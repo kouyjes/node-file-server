@@ -10,6 +10,7 @@
             data:function () {
                 var pathRoute = session.object(pathStorageKey);
                 return {
+                    keyword:'',
                     layoutType:'grid',
                     pathRoute:pathRoute || [{
                         path:'',
@@ -23,6 +24,23 @@
                     return this.pathRoute.map(function (route) {
                         return route.path;
                     }).join('/');
+                },
+                filterFiles:function () {
+                    var files = this.files;
+                    var keyword = this.keyword;
+                    if(!keyword){
+                        return files;
+                    }
+                    var words = keyword.split(/\s+/);
+                    return files.filter(function (file) {
+                        var name = file.name || '';
+                        return words.every(function (word) {
+                            var regexp = new RegExp(word,'i');
+                            return regexp.test(name);
+                        });
+
+                    });
+
                 }
             },
             methods:{
@@ -34,6 +52,9 @@
                     }
                 },
                 clickDir:function (file) {
+                    if(!file.isDir){
+                        return;
+                    }
                     this.pathRoute.push({
                         path:file.name,
                         name:file.name

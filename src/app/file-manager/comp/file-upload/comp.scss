@@ -3,15 +3,46 @@
 .file-upload{
   &.upload-task{
     position: absolute;
-    bottom:0;
+    $maxHeight:420px;
+    $minWidth:600px;
     right:30px;
     border:1px solid #ccc;
     $headerHeight:38px;
     $bottomHeight:40px;
     padding-top:$headerHeight;
     padding-bottom:$bottomHeight;
-    width:600px;
+    width:$minWidth;
+    height:$maxHeight;
     background-color:#fff;
+
+    -webkit-transition: bottom .6s,height .6s;
+    transition:bottom .6s,height .6s;
+
+    bottom:-($maxHeight - $headerHeight);
+
+    &.maximize{
+      bottom:0;
+    }
+    &.full-screen{
+      position: fixed;
+      right: 0;
+      bottom:0;
+      width: 100%;
+      height: 100%;
+      min-width:$minWidth;
+      .file-name{
+        width:25%;
+      }
+      .file-size{
+        width:15%;
+      }
+      .file-path{
+        width:25%;
+      }
+      .task-status{
+        width:25%;
+      }
+    }
     >header{
       position:absolute;
       top:0;
@@ -22,24 +53,40 @@
       color:#fff;
       font-size:14px;
       background-color:rgba(130, 124, 243, 0.52);
+      text-align: center;
+      .title{
+        float:left;
+      }
+      .upload-statistic{
 
-
-      .minus,.maximize{
+      }
+      .minus,.maximize,.full-screen{
         float:right;
         width:18px;
         height:18px;
-        background-size:100%;
+        background-size:80%;
         background-repeat: no-repeat;
+        background-position: center;
         cursor:pointer;
+        border-radius:1px;
         &:not(:last-child){
           margin-left:10px;
         }
         &:hover{
           background-color:#82b1b0;
         }
+        &:active{
+          background-color: #80a6b1;
+        }
       }
       .minus{
         background-image:url("./images/minus.svg");
+      }
+      .full-screen{
+        background-image:url("./images/full-screen.svg");
+      }
+      .out-full-screen{
+        background-image:url("./images/out-full-screen.svg");
       }
       .maximize{
         background-image:url("./images/maximize.svg");
@@ -59,6 +106,7 @@
     >div{
       position: relative;
       width:100%;
+      height:100%;
       overflow:hidden;
       font-size:14px;
       $height:30px;
@@ -75,6 +123,17 @@
       }
       .task-status{
         width:200px;
+      }
+      .clear-task-list{
+        float:right;
+        color: #415ad8;
+        cursor:pointer;
+        &:hover{
+          text-decoration: underline;
+        }
+        &:active{
+          color: #3447d4;
+        }
       }
       .t-head{
         position: absolute;
@@ -94,8 +153,7 @@
         }
       }
       .t-body{
-        min-height:300px;
-        max-height:60vh;
+        height:100%;
         overflow:auto;
       }
       .task-item{
@@ -111,14 +169,19 @@
           @extend %text-ellipsis;
         }
         .task-status{
+          position: relative;
           >*{
             float:left;
           }
+          $right:60px;
+          padding-right:$right;
           .task-progress{
-            width:100px;
+            width:100%;
             height:20px;
           }
           a{
+            position: absolute;
+            right:0;
             margin-left:8px;
             color:blue;
             cursor:pointer;

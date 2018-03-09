@@ -26,7 +26,12 @@
                     taskQueue:[],
                     eventTimeout:null,
                     runningQueue:[],
+                    uploadedCount:0,
                     page:1,
+                    state:{
+                        fullScreen:false,
+                        minus:true
+                    },
                     events:{
                         dragStart:null,
                         dragEnter:null,
@@ -47,6 +52,27 @@
                 }
             },
             methods:{
+                toggleSize:function () {
+                    var state = this.state;
+                    state.minus = !state.minus;
+                },
+                fileSize:function (task) {
+                    if(task.sizeText){
+                        return task.sizeText;
+                    }
+                    fileService.getFile(task.item).then(function (file) {
+                        if(file){
+                            task.size = file.size;
+                        }else{
+                            task.size = 0;
+                        }
+                        task.sizeText = fileService.formatFileSize(task.size);
+                    });
+                },
+                toggleFullScreen:function () {
+                    var state = this.state;
+                    state.fullScreen = !state.fullScreen;
+                },
                 dropItem:function (dataTransfer) {
                     var currentDir = this.currentDir;
                     fileService.getUploadItems(dataTransfer).then(function (items) {
@@ -55,6 +81,8 @@
                                 dir:currentDir,
                                 progress:0,
                                 status:0,
+                                size:-1,
+                                sizeText:'',
                                 item:item
                             };
                         });
@@ -92,12 +120,28 @@
                         this.checkRunningQueue();
                     }
                 },
+                removeAllTasks:function () {
+                    this.tasks.splice(0,this.tasks.length);
+                    this.taskQueue.splice(0,this.taskQueue.length);
+                },
+                removeTask:function (task) {
+                    var tasks = this.tasks,
+                        taskQueue = this.taskQueue;
+
+                    [tasks,taskQueue].forEach(function (queue) {
+                        var index = queue.indexOf(task);
+                        if(index >= 0){
+                            tasks.splice(index,1);
+                        }
+                    });
+                },
                 executeTasks:function () {
                     this.checkRunningQueue();
                     this.runningQueue.forEach(function (task) {
                         if(task.status === 0){
                             task.status = 1;
                             fileService.executeUploadTask(task).then(function () {
+                                this.uploadedCount++;
                                 task.status = 2;
                                 var runningQueue = this.runningQueue;
                                 var index = runningQueue.indexOf(task);

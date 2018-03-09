@@ -1,4 +1,4 @@
-.file-manager .block-item a {
+.file-manager .grid-layout .block-item a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
@@ -18,31 +18,59 @@
   .file-manager ul {
     padding: 0;
     margin: 0; }
-  .file-manager .block-item {
+  .file-manager .dir-item {
+    cursor: pointer; }
+    .file-manager .dir-item > div {
+      background-image: url("images/dir.svg"); }
+  .file-manager .file-item > div {
+    background-image: url("images/file.svg"); }
+  .file-manager .grid-layout .block-item {
     font-size: 12px;
     width: 120px;
     height: 125px;
     list-style: none;
     display: inline-block;
     overflow: hidden; }
-    .file-manager .block-item:hover {
+    .file-manager .grid-layout .block-item:hover {
       background-color: #e4dbdb;
       border-radius: .25em; }
-    .file-manager .block-item > div {
+    .file-manager .grid-layout .block-item > div {
       width: 100%;
       height: 80px;
       padding: 10px 25px;
       background-size: 100%;
       background-clip: content-box; }
-    .file-manager .block-item a {
+    .file-manager .grid-layout .block-item a {
       display: inline-block;
       width: 100%;
       text-align: center;
       padding: 8px; }
-  .file-manager .dir-item > div {
-    background-image: url("images/dir.svg"); }
-  .file-manager .file-item > div {
-    background-image: url("images/file.svg"); }
+  .file-manager .list-layout li {
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 1px solid #f1e5e5; }
+    .file-manager .list-layout li:hover {
+      background-color: #f5dede; }
+    .file-manager .list-layout li > * {
+      position: relative;
+      display: inline-block;
+      padding: 10px 4px; }
+    .file-manager .list-layout li .type {
+      width: 60px; }
+      .file-manager .list-layout li .type > div {
+        position: absolute;
+        left: 4px;
+        top: -2px;
+        width: 100%;
+        height: 25px;
+        background-repeat: no-repeat;
+        background-size: 25px; }
+    .file-manager .list-layout li .name {
+      width: 30%; }
+    .file-manager .list-layout li .size {
+      width: 15%; }
+    .file-manager .list-layout li .date {
+      width: 30%; }
   .file-manager .file-container {
     width: 100%;
     height: 100%;
@@ -80,7 +108,7 @@
         .file-manager .file-container > header .tool .sort-type, .file-manager .file-container > header .tool .layout-type {
           width: 30px;
           height: 30px;
-          border: 1px solid #4234e4;
+          border: 1px solid #a9bce4;
           margin-left: 10px;
           background-position: center;
           background-repeat: no-repeat;

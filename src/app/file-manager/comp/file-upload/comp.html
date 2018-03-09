@@ -1,24 +1,28 @@
-<div class="file-upload upload-task">
+<div class="file-upload upload-task" :class="{'maximize':!state.minus,'full-screen':state.fullScreen}">
     <header>
-        <span>任务列表</span>
-        <a class="maximize"></a>
-        <a class="minus"></a>
+        <span class="title">任务列表</span>
+        <span class="upload-statistic" v-if="tasks.length">{{uploadedCount}}/{{tasks.length}}</span>
+        <a class="full-screen" @click="toggleFullScreen()" :class="{'out-full-screen':state.fullScreen,'full-screen':!state.fullScreen}"></a>
+        <a v-if="!state.fullScreen" class="minus" @click="toggleSize()" :class="{'minus':!state.minus,'maximize':state.minus}"></a>
     </header>
     <div>
         <div class="t-head">
             <div class="file-name">文件名</div>
             <div class="file-size">大小</div>
             <div class="file-path">目录</div>
-            <div class="task-status">状态</div>
+            <div class="task-status">
+                状态
+                <a class="clear-task-list" @click="removeAllTasks()">清空列表</a>
+            </div>
         </div>
         <ul class="t-body">
             <li class="task-item" v-for="task in pageTasks">
                 <div class="file-name">{{task.item.name}}</div>
-                <div class="file-size">100kb</div>
+                <div class="file-size">{{fileSize(task)}}</div>
                 <div class="file-path" :title="task.item.fullPath">{{task.item.fullPath}}</div>
                 <div class="task-status">
                     <progress-bar class="task-progress" :progress="task.progress"></progress-bar>
-                    <a v-if="task.status===0">删除</a>
+                    <a @click="removeTask(task)" v-if="task.status===0">删除</a>
                     <a v-else-if="task.status===1">上传中</a>
                     <a v-else>完成</a>
                 </div>

@@ -78,9 +78,28 @@
         this.files = function (path) {
             return httpRequest.post('/list',{
                 path:path
-            });
+            }).then(function (files) {
+                files.forEach(function (file) {
+                    file.sizeText = this.formatFileSize(file.size);
+                }.bind(this));
+                return files;
+            }.bind(this));
         };
         this.getUploadItems = getUploadItems;
+        this.getFile = function (item) {
+            return getFile(item);
+        };
+        this.formatFileSize = function (size) {
+            if(!size){
+                return '-';
+            }
+            var sizeUnit = ['B','KB','MB','GB'];
+            while(size > 1024){
+                size = size / 1024;
+                sizeUnit.shift();
+            }
+            return size.toFixed(1) + sizeUnit[0];
+        };
         this.executeUploadTask = function (task) {
             var item = task.item,
                 dir = task.dir;

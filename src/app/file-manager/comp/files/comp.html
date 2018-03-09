@@ -3,9 +3,9 @@
         <header>
             <div class="tool">
                 <a class="layout-type" @click="switchLayout()" :class="{'grid':layoutType==='grid','list':layoutType!=='grid'}"></a>
-                <a class="sort-type"></a>
+                <a v-if="false" class="sort-type"></a>
                 <div class="search">
-                    <input type="text"/>
+                    <input type="text" v-model="keyword"/>
                 </div>
             </div>
             <div class="info">
@@ -26,15 +26,22 @@
             </div>
         </header>
         <div>
-            <ul>
-                <li @click="clickDir(file)" :title="file.name" v-if="file.isDir" v-for="file in files" class="block-item dir-item">
+            <ul class="grid-layout" v-if="layoutType==='grid'">
+                <li v-for="file in filterFiles" @click="clickDir(file)" :title="file.name"
+                    class="block-item dir-item" :class="{'file-item':!file.isDir,'dir-item':file.isDir}">
                     <div></div>
                     <a>{{file.name}}</a>
                 </li>
-                <li v-else class="block-item file-item" :title="file.name">
-                    <div></div>
-                    <a>{{file.name}}</a>
-                </li>
+            </ul>
+            <ul v-else class="list-layout">
+               <li v-for="file in filterFiles">
+                   <div class="type" :class="{'dir-item':file.isDir,'file-item':!file.isDir}">
+                       <div @click="clickDir(file)"></div>
+                   </div>
+                   <div class="name">{{file.name}}</div>
+                   <div class="size">{{file.sizeText}}</div>
+                   <div class="date"></div>
+               </li>
             </ul>
         </div>
     </div>
