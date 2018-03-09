@@ -22,6 +22,21 @@
     color: #fff;
     font-size: 14px;
     background-color: rgba(130, 124, 243, 0.52); }
+    .file-upload.upload-task > header .minus, .file-upload.upload-task > header .maximize {
+      float: right;
+      width: 18px;
+      height: 18px;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      cursor: pointer; }
+      .file-upload.upload-task > header .minus:not(:last-child), .file-upload.upload-task > header .maximize:not(:last-child) {
+        margin-left: 10px; }
+      .file-upload.upload-task > header .minus:hover, .file-upload.upload-task > header .maximize:hover {
+        background-color: #82b1b0; }
+    .file-upload.upload-task > header .minus {
+      background-image: url("./images/minus.svg"); }
+    .file-upload.upload-task > header .maximize {
+      background-image: url("./images/maximize.svg"); }
   .file-upload.upload-task > footer {
     position: absolute;
     bottom: 0;

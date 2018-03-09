@@ -1,53 +1,6 @@
 (function (Application) {
     var app = Application.app('file-manager');
     var eventNames = ['drag','dragstart','dragend','dragover','dragenter','dragleave','drop'];
-    var slice = Array.prototype.slice;
-    function scanEntry(entry,items) {
-        if(!items){
-            items = [];
-        }
-        items.push(entry);
-        if(entry.isDirectory){
-            var reader = entry.createReader();
-            return new Promise(function (resolve,reject){
-                try{
-                    reader.readEntries(function (entries) {
-                        var promises = slice.call(entries).map(function (_entry) {
-                            return scanEntry(_entry,items);
-                        });
-                        Promise.all(promises).then(function () {
-                            resolve(items);
-                        },function (e) {
-                            reject(e);
-                        });
-                    });
-                }catch(e){
-                    reject(e);
-                }
-            });
-        }else if(entry.isFile){
-            return Promise.resolve([entry]);
-        }
-    }
-    function getUploadItems(dataTransfer) {
-        var items = dataTransfer.items;
-        var promises = [];
-        slice.call(items).some(function (item) {
-            var entry = item['getAsEntry'] || item['webkitGetAsEntry'];
-            if(!entry){
-                throw new Error('not supported !');
-            }
-            entry = entry.call(item);
-            promises.push(scanEntry(entry));
-        });
-        return Promise.all(promises).then(function (itemsArray) {
-            var entries = [];
-            itemsArray.forEach(function (items) {
-                entries = entries.concat(items);
-            });
-            return entries;
-        });
-    }
     app.ready(function () {
         var fileService = app.getService('fileService');
         var def = {
@@ -96,7 +49,7 @@
             methods:{
                 dropItem:function (dataTransfer) {
                     var currentDir = this.currentDir;
-                    getUploadItems(dataTransfer).then(function (items) {
+                    fileService.getUploadItems(dataTransfer).then(function (items) {
                         var tasks = items.map(function (item) {
                             return {
                                 dir:currentDir,

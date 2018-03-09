@@ -22,6 +22,28 @@
       color:#fff;
       font-size:14px;
       background-color:rgba(130, 124, 243, 0.52);
+
+
+      .minus,.maximize{
+        float:right;
+        width:18px;
+        height:18px;
+        background-size:100%;
+        background-repeat: no-repeat;
+        cursor:pointer;
+        &:not(:last-child){
+          margin-left:10px;
+        }
+        &:hover{
+          background-color:#82b1b0;
+        }
+      }
+      .minus{
+        background-image:url("./images/minus.svg");
+      }
+      .maximize{
+        background-image:url("./images/maximize.svg");
+      }
     }
     >footer{
       position:absolute;
