@@ -58,7 +58,22 @@
         float:left;
       }
       .upload-statistic{
-
+        display: inline-block;
+        >i{
+          display: inline-block;
+          width:10px;
+        }
+        >span{
+          cursor:pointer;
+          color: #4553ff;
+          &.select{
+            text-decoration: underline;
+          }
+          &.text{
+            cursor: auto;
+            color:#fff;
+          }
+        }
       }
       .minus,.maximize,.full-screen{
         float:right;

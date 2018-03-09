@@ -28,6 +28,7 @@
                     runningQueue:[],
                     uploadedCount:0,
                     page:1,
+                    taskView:2,
                     state:{
                         fullScreen:false,
                         minus:true
@@ -41,20 +42,31 @@
             },
             computed:{
                 pageCount:function () {
-                    var tasks = this.tasks;
+                    var tasks = this.currentTasks;
                     return Math.ceil(tasks.length / this.pageSize);
                 },
                 pageTasks:function () {
                     var page = this.page - 1;
                     var start = page * this.pageSize,
                         end = start + this.pageSize;
-                    return this.tasks.slice(start,end);
+                    return this.currentTasks.slice(start,end);
+                },
+                currentTasks:function () {
+                    if(this.taskView === 2){
+                        return this.runningQueue;
+                    }else if(this.taskView === 1){
+                        return this.taskQueue;
+                    }
+                    return  this.tasks;
                 }
             },
             methods:{
                 toggleSize:function () {
                     var state = this.state;
                     state.minus = !state.minus;
+                },
+                setTaskView:function (taskView) {
+                    this.taskView = taskView;
                 },
                 fileSize:function (task) {
                     if(task.sizeText){

@@ -45,6 +45,19 @@
     text-align: center; }
     .file-upload.upload-task > header .title {
       float: left; }
+    .file-upload.upload-task > header .upload-statistic {
+      display: inline-block; }
+      .file-upload.upload-task > header .upload-statistic > i {
+        display: inline-block;
+        width: 10px; }
+      .file-upload.upload-task > header .upload-statistic > span {
+        cursor: pointer;
+        color: #4553ff; }
+        .file-upload.upload-task > header .upload-statistic > span.select {
+          text-decoration: underline; }
+        .file-upload.upload-task > header .upload-statistic > span.text {
+          cursor: auto;
+          color: #fff; }
     .file-upload.upload-task > header .minus, .file-upload.upload-task > header .maximize, .file-upload.upload-task > header .full-screen {
       float: right;
       width: 18px;

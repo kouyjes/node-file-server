@@ -1,7 +1,13 @@
 <div class="file-upload upload-task" :class="{'maximize':!state.minus,'full-screen':state.fullScreen}">
     <header>
         <span class="title">任务列表</span>
-        <span class="upload-statistic" v-if="tasks.length">{{uploadedCount}}/{{tasks.length}}</span>
+        <div class="upload-statistic" v-if="tasks.length">
+            <span @click="setTaskView(2)" :class="{'select':taskView===2}">{{runningQueue.length}}</span>/
+            <span @click="setTaskView(1)" :class="{'select':taskView===1}">{{taskQueue.length}}</span>
+            <i></i>
+            <span class="text">{{uploadedCount}}</span>/
+            <span @click="setTaskView(0)" :class="{'select':taskView===0}">{{tasks.length}}</span>
+        </div>
         <a class="full-screen" @click="toggleFullScreen()" :class="{'out-full-screen':state.fullScreen,'full-screen':!state.fullScreen}"></a>
         <a v-if="!state.fullScreen" class="minus" @click="toggleSize()" :class="{'minus':!state.minus,'maximize':state.minus}"></a>
     </header>
@@ -30,6 +36,6 @@
         </ul>
     </div>
     <footer>
-        <task-paging :page-count="pageCount" @change="taskPageChanged"></task-paging>
+        <task-paging :page-count="pageCount"  @change="taskPageChanged"></task-paging>
     </footer>
 </div>
