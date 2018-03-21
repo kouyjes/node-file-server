@@ -14,6 +14,7 @@
                 result = result['responseJSON'] || result.responseText;
                 if(!result){
                     message.error('未知错误');
+                    return;
                 }
                 var text = result.data || result['error'] || result;
                 if(typeof text != 'string'){

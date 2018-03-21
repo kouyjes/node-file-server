@@ -188,18 +188,29 @@
           >*{
             float:left;
           }
-          $right:60px;
+          $right:120px;
           padding-right:$right;
           .task-progress{
             width:100%;
             height:20px;
           }
-          a{
+          .right{
             position: absolute;
             right:0;
-            margin-left:8px;
-            color:blue;
+            width:$right;
+            white-space: nowrap;
+            overflow:hidden;
+            text-overflow: ellipsis;
+            font-size:12px;
+            padding-top:2px;
+            text-align: left;
+            text-indent: 10px;
+            color:#7d6f6f;
+          }
+          .remove{
             cursor:pointer;
+            padding:0 2px;
+            color: #243cff;
           }
         }
       }

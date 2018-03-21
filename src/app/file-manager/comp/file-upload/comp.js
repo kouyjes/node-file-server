@@ -92,6 +92,7 @@
                             return {
                                 dir:currentDir,
                                 progress:0,
+                                uploadRate:'',
                                 status:0,
                                 size:-1,
                                 sizeText:'',
@@ -138,12 +139,15 @@
                 },
                 removeTask:function (task) {
                     var tasks = this.tasks,
+                        runningQueue = this.runningQueue,
                         taskQueue = this.taskQueue;
-
-                    [tasks,taskQueue].forEach(function (queue) {
+                    if(task.xhr){
+                        task.xhr.abort();
+                    }
+                    [tasks,taskQueue,runningQueue].forEach(function (queue) {
                         var index = queue.indexOf(task);
                         if(index >= 0){
-                            tasks.splice(index,1);
+                            queue.splice(index,1);
                         }
                     });
                 },

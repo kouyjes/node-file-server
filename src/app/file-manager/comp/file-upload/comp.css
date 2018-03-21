@@ -141,17 +141,27 @@
         padding: 12px 8px; }
       .file-upload.upload-task > div .task-item .task-status {
         position: relative;
-        padding-right: 60px; }
+        padding-right: 120px; }
         .file-upload.upload-task > div .task-item .task-status > * {
           float: left; }
         .file-upload.upload-task > div .task-item .task-status .task-progress {
           width: 100%;
           height: 20px; }
-        .file-upload.upload-task > div .task-item .task-status a {
+        .file-upload.upload-task > div .task-item .task-status .right {
           position: absolute;
           right: 0;
-          margin-left: 8px;
-          color: blue;
-          cursor: pointer; }
+          width: 120px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 12px;
+          padding-top: 2px;
+          text-align: left;
+          text-indent: 10px;
+          color: #7d6f6f; }
+        .file-upload.upload-task > div .task-item .task-status .remove {
+          cursor: pointer;
+          padding: 0 2px;
+          color: #243cff; }
 
 /*# sourceMappingURL=comp.css.map */

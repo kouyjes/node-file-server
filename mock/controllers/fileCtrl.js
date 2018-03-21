@@ -54,6 +54,7 @@ function normalizePath(pathname) {
     return pathname;
 }
 exports.list = function (request,response) {
+
     var data = '';
     request.on('data',function (d) {
         data += d;

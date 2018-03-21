@@ -89,16 +89,20 @@
         this.getFile = function (item) {
             return getFile(item);
         };
-        this.formatFileSize = function (size) {
+        function formatFileSize(size) {
             if(!size){
                 return '-';
             }
             var sizeUnit = ['B','KB','MB','GB'];
-            while(size > 1024){
-                size = size / 1024;
+            var unit = 1024;
+            while(size > unit){
+                size = size / unit;
                 sizeUnit.shift();
             }
             return size.toFixed(1) + sizeUnit[0];
+        }
+        this.formatFileSize = function (size) {
+            return formatFileSize(size);
         };
         this.executeUploadTask = function (task) {
             var item = task.item,
@@ -126,14 +130,23 @@
                     data:formData,
                     xhr: function () {
                         var xhr = new XMLHttpRequest();
+                        task.xhr = xhr;
                         xhr.upload.addEventListener("progress", function (evt) {
                             if (evt.lengthComputable) {
                                 var percent = evt.loaded / evt.total;
+                                var now = new Date();
+                                if(task.progress){
+                                    var size = (percent - task.progress) * evt.total / ((now - task.date) / 1000);
+                                    task.uploadRate = formatFileSize(size);
+                                }
                                 task.progress = percent;
+                                task.date = new Date().getTime();
                             }
                         }, false);
                         return xhr;
                     }
+                }).then(function () {
+                    task.xhr = null;
                 });
             });
         };
