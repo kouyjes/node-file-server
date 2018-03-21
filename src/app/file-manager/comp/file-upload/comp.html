@@ -33,6 +33,7 @@
                         <span class="remove" @click="removeTask(task)">删除</span>
                         <span v-if="task.uploadRate">{{task.uploadRate}}/S</span>
                     </div>
+                    <div v-else-if="task.status===-1" class="right">失败</div>
                     <div class="right" v-else>完成</div>
                 </div>
             </li>

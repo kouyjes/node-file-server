@@ -150,6 +150,7 @@
                             queue.splice(index,1);
                         }
                     });
+                    this.executeTasks();
                 },
                 executeTasks:function () {
                     this.checkRunningQueue();
@@ -166,6 +167,8 @@
                                 }
                                 this.taskStatusChanged(task);
                                 this.executeTasks();
+                            }.bind(this),function () {
+                                task.status = -1;
                             }.bind(this));
                         }
                     }.bind(this));
