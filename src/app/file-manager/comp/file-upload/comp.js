@@ -134,8 +134,9 @@
                     }
                 },
                 removeAllTasks:function () {
-                    this.tasks.splice(0,this.tasks.length);
-                    this.taskQueue.splice(0,this.taskQueue.length);
+                    [this.tasks,this.taskQueue,this.runningQueue].forEach(function (queue) {
+                        queue.splice(0,queue.length);
+                    });
                 },
                 removeTask:function (task) {
                     var tasks = this.tasks,

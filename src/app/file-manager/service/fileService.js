@@ -136,11 +136,11 @@
                                 var percent = evt.loaded / evt.total;
                                 var now = new Date();
                                 if(task.progress){
-                                    var size = (percent - task.progress) * evt.total / ((now - task.date) / 1000);
+                                    var size = (percent - task.progress) * evt.total / ((now.getTime() - task.date) / 1000);
                                     task.uploadRate = formatFileSize(size);
                                 }
                                 task.progress = percent;
-                                task.date = new Date().getTime();
+                                task.date = now.getTime();
                             }
                         }, false);
                         return xhr;
