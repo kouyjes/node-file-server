@@ -134,6 +134,11 @@
                     }
                 },
                 removeAllTasks:function () {
+                    this.runningQueue.forEach(function (task) {
+                        if(task.xhr){
+                            task.xhr.abort();
+                        }
+                    });
                     [this.tasks,this.taskQueue,this.runningQueue].forEach(function (queue) {
                         queue.splice(0,queue.length);
                     });
